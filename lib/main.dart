@@ -1,8 +1,14 @@
 // #docregion basic-example
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
+import 'package:fvp/fvp.dart' as fvp;
 
-void main() => runApp(const VideoApp());
+void main() {
+  fvp.registerWith(
+    options: {'platforms': ['windows', 'linux']}
+  );
+  runApp(const VideoApp());
+}
 
 /// Stateful widget to fetch and then display video content.
 class VideoApp extends StatefulWidget {
