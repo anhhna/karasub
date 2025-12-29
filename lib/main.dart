@@ -1,73 +1,28 @@
-// #docregion basic-example
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
 import 'package:fvp/fvp.dart' as fvp;
+import 'screens/subtitle_editor_screen.dart';
 
 void main() {
-  fvp.registerWith(
-    options: {'platforms': ['windows', 'linux']}
-  );
-  runApp(const VideoApp());
+  fvp.registerWith(options: {'platforms': ['windows', 'linux']});
+  runApp(const SubtitleEditorApp());
 }
 
-/// Stateful widget to fetch and then display video content.
-class VideoApp extends StatefulWidget {
-  const VideoApp({super.key});
-
-  @override
-  _VideoAppState createState() => _VideoAppState();
-}
-
-class _VideoAppState extends State<VideoApp> {
-  late VideoPlayerController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller =
-        VideoPlayerController.networkUrl(
-            Uri.parse(
-              'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
-            ),
-          )
-          ..initialize().then((_) {
-            // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
-            setState(() {});
-          });
-  }
+class SubtitleEditorApp extends StatelessWidget {
+  const SubtitleEditorApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Video Demo',
-      home: Scaffold(
-        body: Center(
-          child: _controller.value.isInitialized
-              ? AspectRatio(
-                  aspectRatio: _controller.value.aspectRatio,
-                  child: VideoPlayer(_controller),
-                )
-              : Container(),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            setState(() {
-              _controller.value.isPlaying
-                  ? _controller.pause()
-                  : _controller.play();
-            });
-          },
-          child: Icon(
-            _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
-          ),
+      title: 'KaraSub - Subtitle Editor',
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: const Color(0xFF1E1E1E),
+        colorScheme: ColorScheme.dark(
+          primary: const Color(0xFF0078D4),
+          surface: const Color(0xFF2D2D2D),
         ),
       ),
+      debugShowCheckedModeBanner: false,
+      home: const SubtitleEditorScreen(),
     );
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
   }
 }

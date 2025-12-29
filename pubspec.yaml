@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   video_player: ^2.10.1
   fvp: ^0.35.1
+  multi_split_view: ^3.6.1
 
 dev_dependencies:
   flutter_test:
