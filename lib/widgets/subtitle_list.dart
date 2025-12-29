@@ -56,7 +56,7 @@ class SubtitleListPanel extends StatelessWidget {
       height: 30,
       decoration: BoxDecoration(
         border: Border(
-          bottom: BorderSide(color: Colors.white.withOpacity(0.1)),
+          bottom: BorderSide(color: Colors.white.withValues(alpha: 0.1)),
         ),
       ),
       child: Row(
@@ -76,7 +76,7 @@ class SubtitleListPanel extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 8),
               decoration: BoxDecoration(
                 border: Border(
-                  left: BorderSide(color: Colors.white.withOpacity(0.1)),
+                  left: BorderSide(color: Colors.white.withValues(alpha: 0.1)),
                 ),
               ),
               child: const Text(
@@ -91,7 +91,7 @@ class SubtitleListPanel extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 8),
               decoration: BoxDecoration(
                 border: Border(
-                  left: BorderSide(color: Colors.white.withOpacity(0.1)),
+                  left: BorderSide(color: Colors.white.withValues(alpha: 0.1)),
                 ),
               ),
               child: const Text(

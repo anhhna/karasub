@@ -21,7 +21,7 @@ class TimelineRulerPainter extends CustomPainter {
     );
 
     // Draw time markers
-    const secondsPerMark = 1;
+    // const secondsPerMark = 1;
     final totalSeconds = (totalDuration / 1000).ceil();
     final pixelsPerSecond = size.width / totalSeconds;
 
